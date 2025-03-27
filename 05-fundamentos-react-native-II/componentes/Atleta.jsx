@@ -1,9 +1,9 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
-export default function Atleta(props){
-    
-    const {nome, idade, numero, imagem} = props
+export default function Atleta(props) {
+
+    const { nome, idade, numero, imagem } = props
 
 
     return (
@@ -17,11 +17,11 @@ export default function Atleta(props){
 
             <Image
                 source={{
-                    uri:imagem
+                    uri: imagem
                 }}
                 style={{
-                    height:100,
-                    width:200
+                    height: 100,
+                    width: 200
                 }}
             />
         </View>
