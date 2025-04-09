@@ -1,58 +1,49 @@
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View, FlatList } from 'react-native';
 import { PaperProvider, Card, Title, Paragraph, Text, Button, Divider} from 'react-native-paper'
 
 export default function App() {
+
+  const listaFrutas = ['Uva', 'Maça', 'Laranja', 'Melão']
+
   return (
     <PaperProvider>
       <ScrollView>
       <View style={styles.container}>
         <StatusBar style="auto" />
 
-        <Button mode='contained' onPress={() => {alert('Clicou')}}>Clicar</Button>
-        <Button mode='contained-tonal'>Clicar</Button>
-        <Button mode='elevated'>Clicar</Button>
-        <Button mode='outlined'>Clicar</Button>
-        <Button mode='text'>Clicar</Button>
+        {
+          listaFrutas.map(
+            item => <Text variant='displayLarge'>{item}</Text>
+          )
+        }
 
-        <Text>Um texto qualquer</Text>
-        <Divider style={{width: '90%'}}/>
-        <Text variant='bodyLarge'>Um texto qualquer</Text>
-        <Divider style={{width: '90%'}}/>
-        <Text variant='displayLarge'>Um texto qualquer</Text>
-        <Divider style={{width: '90%'}}/>
-        <Text variant='headlineLarge'>Um texto qualquer</Text>
-        <Divider style={{width: '90%'}}/>
-        <Text variant='labelLarge'>Um texto qualquer</Text>
-        <Divider style={{width: '90%'}}/>
-        <Text variant='titleLarge'>Um texto qualquer</Text>
+        {
+          listaFrutas.map(
+            item => (
+              <View>
+                <Text variant='displaySmall'>{item}</Text>
+                <Divider style={{height: '1'}}/>
+              </View>
+            )
+          )
+        }
 
-        <Card style={{ margin: 10 }}>
-          <Card.Content>
-            <Title>Um titulo qualquer!</Title>
-            <Paragraph>Aqui é um texto em paragrado! Aqui é um texto em paragrado!
-              Aqui é um texto em paragrado! Aqui é um texto em paragrado!
-              Aqui é um texto em paragrado!</Paragraph>
-          </Card.Content>
-        </Card>
+        <FlatList
+          data={listaFrutas}
+          renderItem={({item}) => <Text variant='headlineMedium'>{item}</Text>} 
+        />
 
-        <Card style={{ margin: 10 }}>
-          <Card.Content>
-            <Title>Um titulo qualquer!</Title>
-            <Paragraph>Aqui é um texto em paragrado! Aqui é um texto em paragrado!
-              Aqui é um texto em paragrado! Aqui é um texto em paragrado!
-              Aqui é um texto em paragrado!</Paragraph>
-          </Card.Content>
-        </Card>
+        <FlatList
+          data={listaFrutas}
+          renderItem={({item}) => (
+            <View>
+              <Text variant='displaySmall'>{item}</Text>
+              <Divider style={{height: 1}}/>
+            </View>
+          )}
+        />
 
-        <Card style={{ margin: 10 }}>
-          <Card.Content>
-            <Title>Um titulo qualquer!</Title>
-            <Paragraph>Aqui é um texto em paragrado! Aqui é um texto em paragrado!
-              Aqui é um texto em paragrado! Aqui é um texto em paragrado!
-              Aqui é um texto em paragrado!</Paragraph>
-          </Card.Content>
-        </Card>
       </View>
       </ScrollView>
     </PaperProvider>
