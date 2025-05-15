@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import Nome from './src/components/Nome';
 import Volume from './src/components/Volume';
-import NumeroAleatorio from './src/components/NUmeroAleatorio';
+import NumeroAleatorio from './src/components/NumeroAleatorio';
 
 export default function App() {
   return (

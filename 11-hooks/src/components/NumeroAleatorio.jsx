@@ -1,34 +1,34 @@
 import { StyleSheet, View } from 'react-native'
 import React, { useState } from 'react'
-import { Text, Card, Button } from 'react-native-paper'
+import {Card, Button, Text} from 'react-native-paper'
 
-export default function NUmeroAleatorio() {
+export default function NumeroAleatorio() {
 
-    const [numeroAleatorio, setNumeroAleatorio] = useState(0)
-    const listaNumeros = []
+  const [numeroAleatorio, setNumeroAleatorio] = useState(0)
+  const [listaNumeros, setListaNumeros] = useState([])
 
-    function gerarNumero() {
-        const numeroGerado = Math.round(Math.random() * 101)
-        setNumeroAleatorio(numeroGerado)
-        console.log(numeroGerado)
-    }
+  function gerar(){
+    const numeroGerado = Math.round(Math.random() * 101)
+    setNumeroAleatorio(numeroGerado)
+    setListaNumeros([...listaNumeros, numeroGerado])
+  }
 
-    return (
-        <View>
-            <Card style={{ margin: 10 }}>
-                <Card.Content>
-                    <Card.Title title="Componente Número Aleatório" />
-                    <Text variant='displayMedium'>Número: {numeroAleatorio}</Text>
-                </Card.Content>
-                <Card.Actions>
-                    <Button icon='refresh' onPress={gerarNumero}>Gerar Novo Número</Button>
-                </Card.Actions>
-                <Card.Content>
-                    <Text variant='displaySmall'>Lista de Números: {listaNumeros}</Text>
-                </Card.Content>
-            </Card>
-        </View>
-    )
+  return (
+    <View>
+      <Card style={{ margin: 5}}>
+        <Card.Content>
+          <Text>Gerador de Número Aleatório</Text>
+          <Text variant='displayMedium'>Número: {numeroAleatorio}</Text>
+        </Card.Content>
+        <Card.Actions>
+          <Button onPress={gerar}>Gerar</Button>
+        </Card.Actions>
+      </Card>
+      <Card>
+        <Card.Content>
+          {listaNumeros.map(numero => <Text>{numero}</Text>)}
+        </Card.Content>
+      </Card>
+    </View>
+  )
 }
-
-const styles = StyleSheet.create({})
