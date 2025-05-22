@@ -1,9 +1,9 @@
-import { FlatList, StyleSheet, View, Text } from 'react-native'
-import { Card, Avatar, IconButton, ActivityIndicator, MD2Colors } from 'react-native-paper'
+import { FlatList, StyleSheet, View } from 'react-native'
+import { Card, Avatar, IconButton, ActivityIndicator, MD2Colors, Text } from 'react-native-paper'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation, route}) {
 
   const [users, setUsers] = useState([])
 
@@ -24,7 +24,9 @@ export default function HomeScreen() {
       <FlatList
         data={users}
         renderItem={({ item }) => (
-          <Card style={{ margin: 5 }}>
+          <Card 
+          style={{ margin: 5 }}
+          onPress={() => navigation.navigate('Usuario', item.id)}>
             <Card.Title
               title={item.firstName + ' ' + item.lastName}
               subtitle={item.email}
